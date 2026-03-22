@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-star-blue: #0052cc;
+  --color-star-blue-dark: #003d99;
+  --color-star-blue-light: #2684ff;
+  --color-star-red: #ff3b3b;
+  --color-star-red-dark: #e60000;
+
+  --font-outfit: "Outfit", sans-serif;
+
+  --shadow-premium: 0 20px 50px rgba(0, 50, 150, 0.15);
+  --shadow-soft: 0 10px 40px rgba(0, 50, 150, 0.08);
+}
+
+@layer base {
+  body {
+    @apply font-outfit bg-slate-50 text-slate-900 selection:bg-star-blue/20;
+  }
+}
+
+@layer utilities {
+  .mesh-gradient {
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(217,100%,95%,1) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, hsla(214,100%,92%,1) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, hsla(210,100%,94%,1) 0, transparent 50%), 
+      radial-gradient(at 50% 50%, hsla(214,100%,96%,1) 0, transparent 50%), 
+      radial-gradient(at 0% 100%, hsla(217,100%,95%,1) 0, transparent 50%), 
+      radial-gradient(at 100% 100%, hsla(201,100%,94%,1) 0, transparent 50%);
+  }
+
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-premium;
+  }
+
+  .hero-text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-star-blue to-blue-400;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulse-slow {
+  0% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 0.3; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
